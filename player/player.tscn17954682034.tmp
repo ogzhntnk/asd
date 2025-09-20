@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0arcuka0d2uw"]
+
+[ext_resource type="Script" uid="uid://ddtdjqh4sjl6t" path="res://player/deneme.gd" id="1_yw30f"]
+[ext_resource type="Script" uid="uid://coy50032hb5wn" path="res://player/PlayerScripts/StateMachine.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://xn07ibf4tnm1" path="res://player/PlayerScripts/BaseState.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://clstv3ajn3wrb" path="res://player/IdleState.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://xgyo0rb0qiod" path="res://player/RunState.gd" id="4_qjkh3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 12.0
+height = 40.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_yw30f")
+speed = null
+jump_velocity = null
+gravity = null
+dash_speed = null
+has_head = null
+has_rarm = null
+has_larm = null
+has_rleg = null
+has_lleg = null
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("2_rkbax")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_yw30f")
+
+[node name="Run" type="Node2D" parent="StateMachine"]
+script = ExtResource("4_qjkh3")
+
+[node name="Jump" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Crouch" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="DoubleJump" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Fall" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Dash" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Attack" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Shoot" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Throw" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Drop" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Hurt" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="Dead" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_g1dw6")
+
+[node name="BodyParts" type="Node2D" parent="."]
+
+[node name="Body" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/Body"]
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = 20.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Head" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/Head"]
+offset_left = -6.0
+offset_top = -32.0
+offset_right = 6.0
+offset_bottom = -20.0
+color = Color(1, 0.8, 0.6, 1)
+
+[node name="RightArm" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/RightArm"]
+z_index = -1
+offset_left = 10.0
+offset_top = -15.0
+offset_right = 16.0
+offset_bottom = 5.0
+color = Color(1, 0.8, 0.6, 1)
+
+[node name="LeftArm" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/LeftArm"]
+z_index = 1
+offset_left = -16.0
+offset_top = -15.0
+offset_right = -10.0
+offset_bottom = 5.0
+color = Color(1, 0.8, 0.6, 1)
+
+[node name="RightLeg" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/RightLeg"]
+z_index = -1
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 10.0
+offset_bottom = 45.0
+color = Color(0, 0.4, 0.8, 1)
+
+[node name="LeftLeg" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/LeftLeg"]
+offset_left = -10.0
+offset_top = 20.0
+offset_right = -2.0
+offset_bottom = 45.0
+color = Color(0, 0.4, 0.8, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="GroundDetector" type="RayCast2D" parent="."]
+position = Vector2(0, 20)
+target_position = Vector2(0, 10)
+
+[node name="ThrowSystem" type="Node2D" parent="."]
+
+[node name="InteractionSystem" type="Node2D" parent="."]
+
+[node name="AnimationManager" type="Node2D" parent="."]
+
+[node name="Audio Manager" type="Node2D" parent="."]
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = -41.0
+offset_top = -59.0
+offset_right = 37.0
+offset_bottom = -36.0
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://nmphxuawnatk"]
+
+[ext_resource type="Script" uid="uid://x3bo21you4g8" path="res://selection_wheel.gd" id="1_eljmd"]
+
+[node name="SelectionWheel" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eljmd")
+bkg_color = Color(0.226707, 0.226707, 0.226707, 1)
+line_color = Color(0.716296, 0.716296, 0.716296, 1)
+options = [null, null, null, null, null]

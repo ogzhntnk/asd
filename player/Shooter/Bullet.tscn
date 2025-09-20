@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7jhxlat6m3ds"]
+
+[ext_resource type="Script" uid="uid://d4ip60jbcx2il" path="res://player/Shooter/bullet.gd" id="1_xjei5"]
+[ext_resource type="Texture2D" uid="uid://cr64xndytdrer" path="res://player/Shooter/playerbullet.png" id="2_xjei5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_galol"]
+atlas = ExtResource("2_xjei5")
+region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvs7m"]
+atlas = ExtResource("2_xjei5")
+region = Rect2(6, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4is6h"]
+atlas = ExtResource("2_xjei5")
+region = Rect2(12, 0, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jv07d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_galol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvs7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4is6h")
+}],
+"loop": false,
+"name": &"bullet_anim",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xbok"]
+radius = 2.0
+
+[node name="PlayerBullet" type="Node2D" groups=["player_bullets"]]
+script = ExtResource("1_xjei5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.2, 3.2)
+sprite_frames = SubResource("SpriteFrames_jv07d")
+animation = &"bullet_anim"
+autoplay = "bullet_anim"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_7xbok")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

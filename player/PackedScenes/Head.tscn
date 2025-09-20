@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmjibpjcdwki7"]
+
+[ext_resource type="Texture2D" uid="uid://dhnvo35sjb6s5" path="res://icon.svg" id="1_7raov"]
+[ext_resource type="Script" uid="uid://cjwqlxtmdsai3" path="res://player/PackedScenes/Part.gd" id="1_eps0p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7raov"]
+radius = 36.0139
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eps0p"]
+size = Vector2(32, 32)
+
+[node name="Head" type="RigidBody2D"]
+script = ExtResource("1_eps0p")
+part_name = "head"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_7raov")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7raov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eps0p")
+
+[node name="HeadCamera" type="Camera2D" parent="."]

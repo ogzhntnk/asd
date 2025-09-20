@@ -1,0 +1,58 @@
+[gd_scene load_steps=14 format=3 uid="uid://dukxajn3udhiw"]
+
+[ext_resource type="PackedScene" uid="uid://d0arcuka0d2uw" path="res://player/player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b63qaiier1y6t" path="res://player/deneme3.gd" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://g300n7t5jlno" path="res://player/PackedScenes/dot.tscn" id="2_272bh"]
+[ext_resource type="PackedScene" uid="uid://cmjibpjcdwki7" path="res://player/PackedScenes/Head.tscn" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ciel442lqpbu7" path="res://player/PackedScenes/right_arm.tscn" id="4_kek77"]
+[ext_resource type="PackedScene" uid="uid://cwmf5k10q5yur" path="res://player/PackedScenes/left_arm.tscn" id="5_4c57u"]
+[ext_resource type="PackedScene" uid="uid://e77wgs7j4h45" path="res://player/PackedScenes/right_leg.tscn" id="6_efxa6"]
+[ext_resource type="PackedScene" uid="uid://llniv8571ra7" path="res://player/PackedScenes/left_leg.tscn" id="7_dg77c"]
+[ext_resource type="PackedScene" uid="uid://nmphxuawnatk" path="res://player/PackedScenes/selection_wheel.tscn" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://47rvaxwnwt7u" path="res://ui.gd" id="8_kek77"]
+[ext_resource type="PackedScene" uid="uid://c22sdf1cbs56o" path="res://enemy_camera.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://do6ejjbhyyir7" path="res://player/PackedScenes/cute_evil.tscn" id="12_dg77c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(1153, 26)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(538, 230)
+script = ExtResource("2_1bvp3")
+throw_power_multiplier = 20.0
+max_throw_distance = 200.0
+trajectory_point_scene = ExtResource("2_272bh")
+head_scene = ExtResource("3_5vw27")
+rarm_scene = ExtResource("4_kek77")
+larm_scene = ExtResource("5_4c57u")
+rleg_scene = ExtResource("6_efxa6")
+lleg_scene = ExtResource("7_dg77c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576.5, 431)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("8_kek77")
+
+[node name="Label" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SelectionWheel" parent="UI" instance=ExtResource("8_5vw27")]
+visible = false
+outer_radius = 128
+inner_radius = 32
+line_width = 5
+
+[node name="EvilCamera" parent="." instance=ExtResource("11_efxa6")]
+position = Vector2(397, 267)
+
+[node name="CuteEvil" parent="." instance=ExtResource("12_dg77c")]
+position = Vector2(284, 311)

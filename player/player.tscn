@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0arcuka0d2uw"]
+
+[ext_resource type="Script" uid="uid://ddtdjqh4sjl6t" path="res://player/deneme.gd" id="1_yw30f"]
+[ext_resource type="Script" uid="uid://ck46x053r516f" path="res://player/health_system.gd" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://11nx8gyvmuc5" path="res://player/Shooter/shooter.gd" id="7_boad6"]
+[ext_resource type="PackedScene" uid="uid://b7jhxlat6m3ds" path="res://player/Shooter/Bullet.tscn" id="8_rgyib"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 12.0
+height = 78.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 18
+script = ExtResource("1_yw30f")
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("2_yw30f")
+
+[node name="BodyParts" type="Node2D" parent="."]
+
+[node name="Body" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/Body"]
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = 20.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Head" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/Head"]
+offset_left = -6.0
+offset_top = -32.0
+offset_right = 6.0
+offset_bottom = -20.0
+color = Color(1, 0.8, 0.6, 1)
+
+[node name="RightArm" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/RightArm"]
+z_index = -1
+offset_left = 10.0
+offset_top = -15.0
+offset_right = 16.0
+offset_bottom = 5.0
+color = Color(1, 0.8, 0.6, 1)
+
+[node name="LeftArm" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/LeftArm"]
+z_index = 1
+offset_left = -16.0
+offset_top = -15.0
+offset_right = -10.0
+offset_bottom = 5.0
+color = Color(1, 0.8, 0.6, 1)
+
+[node name="Shooter" type="Node2D" parent="BodyParts/LeftArm"]
+script = ExtResource("7_boad6")
+bullet_scene = ExtResource("8_rgyib")
+
+[node name="Timer" type="Timer" parent="BodyParts/LeftArm/Shooter"]
+wait_time = 0.3
+
+[node name="RightLeg" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/RightLeg"]
+z_index = -1
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 10.0
+offset_bottom = 45.0
+color = Color(0, 0.4, 0.8, 1)
+
+[node name="LeftLeg" type="Node2D" parent="BodyParts"]
+
+[node name="ColorRect" type="ColorRect" parent="BodyParts/LeftLeg"]
+offset_left = -10.0
+offset_top = 20.0
+offset_right = -2.0
+offset_bottom = 45.0
+color = Color(0, 0.4, 0.8, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="AnimationManager" type="Node2D" parent="."]
+
+[node name="Audio Manager" type="Node2D" parent="."]
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = -41.0
+offset_top = -59.0
+offset_right = 37.0
+offset_bottom = -36.0
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="health_changed" from="HealthSystem" to="." method="_on_health_changed"]
+[connection signal="player_died" from="HealthSystem" to="." method="_on_player_died"]

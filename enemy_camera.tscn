@@ -1,0 +1,117 @@
+[gd_scene load_steps=15 format=3 uid="uid://c22sdf1cbs56o"]
+
+[ext_resource type="Script" uid="uid://ctbgwf2nqjtwr" path="res://evil_camera.gd" id="1_6o1fd"]
+[ext_resource type="PackedScene" uid="uid://bsgiyqv1u7j4f" path="res://player/PackedScenes/laser_bullet.tscn" id="2_bxlmp"]
+[ext_resource type="Texture2D" uid="uid://bp4j86alb0ggv" path="res://Denemeler/evil_camera_attack.png" id="3_54bsy"]
+[ext_resource type="Texture2D" uid="uid://pvg74pybh2wd" path="res://Denemeler/evil_camera.png" id="3_s1oem"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54bsy"]
+atlas = ExtResource("3_s1oem")
+region = Rect2(0, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2va8"]
+atlas = ExtResource("3_s1oem")
+region = Rect2(50, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skeaw"]
+atlas = ExtResource("3_s1oem")
+region = Rect2(100, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qimi"]
+atlas = ExtResource("3_s1oem")
+region = Rect2(150, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w68ca"]
+atlas = ExtResource("3_s1oem")
+region = Rect2(200, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrtbm"]
+atlas = ExtResource("3_s1oem")
+region = Rect2(250, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bm74"]
+atlas = ExtResource("3_54bsy")
+region = Rect2(0, 0, 50, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bm74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54bsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2va8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skeaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qimi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w68ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrtbm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bm74")
+}],
+"loop": true,
+"name": &"laser_attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54bsy"]
+radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_skeaw"]
+radius = 13.0
+
+[node name="EvilCamera" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_6o1fd")
+laser_bullet_scene = ExtResource("2_bxlmp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3bm74")
+animation = &"laser_attack"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2)
+shape = SubResource("CircleShape2D_54bsy")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+offset_left = 7.0
+offset_top = 49.0
+offset_right = 96.0
+offset_bottom = 76.0
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = -39.0
+offset_top = 65.0
+offset_right = 52.0
+offset_bottom = 100.0
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-4, 2)
+shape = SubResource("CircleShape2D_skeaw")
+
+[node name="PlayerRayCast" type="RayCast2D" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="DirectionTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
