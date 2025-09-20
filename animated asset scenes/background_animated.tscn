@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://dlu4i0yieor4r"]
+
+[ext_resource type="Texture2D" uid="uid://ernet1ahshv4" path="res://jam asset/background_factory_animationsheet.png" id="1_ns14n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oretr"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmltk"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2duk"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(3840, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5mup"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(5760, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6ftp"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(7680, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywt8l"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(9600, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coodl"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(11520, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yjie"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(13440, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dgqf"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(15360, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko4jl"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(17280, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68tcv"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(19200, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xrnw"]
+atlas = ExtResource("1_ns14n")
+region = Rect2(21120, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw5ba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oretr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmltk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2duk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5mup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6ftp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywt8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coodl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yjie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dgqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko4jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68tcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xrnw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="background_animated" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dw5ba")
+autoplay = "default"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv8witwk6bolu"]
+
+[ext_resource type="Texture2D" uid="uid://c1haf3thouemn" path="res://jam asset/button.png" id="1_r04n3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4tde"]
+atlas = ExtResource("1_r04n3")
+region = Rect2(0, 0, 23, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxja4"]
+atlas = ExtResource("1_r04n3")
+region = Rect2(23, 0, 23, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lt4la"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4tde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxja4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="button" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_lt4la")
