@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv8witwk6bolu"]
+[gd_scene load_steps=7 format=3 uid="uid://bv8witwk6bolu"]
 
 [ext_resource type="Texture2D" uid="uid://c1haf3thouemn" path="res://jam asset/button.png" id="1_r04n3"]
+[ext_resource type="Script" uid="uid://b5n5040mrkr16" path="res://animated asset scenes/button.gd" id="2_afkfk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4tde"]
 atlas = ExtResource("1_r04n3")
@@ -24,5 +25,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6164"]
+size = Vector2(22, 16.5)
+
 [node name="button" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_lt4la")
+script = ExtResource("2_afkfk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_y6164")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
