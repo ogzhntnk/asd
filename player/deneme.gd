@@ -9,14 +9,14 @@ extends CharacterBody2D
 
 # --- Fizik değişkenleri ---
 @export var speed: float = 200.0
-@export var jump_velocity: float = -400.0
+@export var jump_velocity: float = -480.0
 @export var gravity: float = 980.0
 @export var dash_speed: float = 400.0
 @export var dash_duration: float = 0.3
 
 # --- Fırlatma değişkenleri ---
-@export var throw_power_multiplier: float = 15.0
-@export var max_throw_distance: float = 300.0
+@export var throw_power_multiplier: float = 35.0
+@export var max_throw_distance: float = 100.0
 @export var min_throw_distance: float = 50.0
 @export var trajectory_point_count: int = 20
 @export var trajectory_point_spacing: float = 20.0
@@ -983,11 +983,3 @@ func interact_with_part():
 	play_animation("jump") # burda yerden alıp takıyor uptade diye yeni animasyon yapmaktansa jump animasyonu ile ört bas et gitsin
 	await get_tree().create_timer(0.5).timeout
 	play_animation("idle")
-
-
-func _on_health_changed(current_health: int, max_health: int) -> void:
-	pass # Replace with function body.
-
-
-func _on_player_died() -> void:
-	pass # Replace with function body.

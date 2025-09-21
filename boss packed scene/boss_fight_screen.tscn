@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwvlb4tsy1x8q"]
+
+[ext_resource type="Script" uid="uid://bu06g1wkh6of2" path="res://boss packed scene/boss_fight_screen.gd" id="1_2tri7"]
+[ext_resource type="PackedScene" uid="uid://ejjkdbmly2j1" path="res://enemyy/enemy_camera.tscn" id="2_t1p5b"]
+[ext_resource type="PackedScene" uid="uid://csossycoaq8kc" path="res://enemyy/cute_evil.tscn" id="3_30iwl"]
+[ext_resource type="PackedScene" uid="uid://djrg4gxwrisgs" path="res://boss packed scene/boss.tscn" id="4_ruuyc"]
+[ext_resource type="PackedScene" uid="uid://cask7khydq8yj" path="res://boss packed scene/Punch.tscn" id="8_d8gqj"]
+[ext_resource type="PackedScene" uid="uid://b44dusow7xf63" path="res://boss packed scene/Punch2.tscn" id="9_ytqio"]
+[ext_resource type="PackedScene" uid="uid://d0arcuka0d2uw" path="res://player/player.tscn" id="15_urqer"]
+[ext_resource type="Script" path="res://ui.gd" id="16_yi4sf"]
+[ext_resource type="PackedScene" uid="uid://nmphxuawnatk" path="res://player/PackedScenes/selection_wheel.tscn" id="17_24gyw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkdrh"]
+size = Vector2(1166, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anc5n"]
+size = Vector2(36, 552)
+
+[node name="BossFightScreen" type="Node2D"]
+script = ExtResource("1_2tri7")
+flying_enemy_scene = ExtResource("2_t1p5b")
+ground_enemy_scene = ExtResource("3_30iwl")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("16_yi4sf")
+
+[node name="Label" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectionWheel" parent="UI" instance=ExtResource("17_24gyw")]
+visible = false
+outer_radius = 128
+inner_radius = 32
+line_width = 5
+
+[node name="Player" parent="." instance=ExtResource("15_urqer")]
+position = Vector2(567, 278)
+throw_power_multiplier = 23.0
+
+[node name="GroundEnemyMarker" type="Marker2D" parent="."]
+position = Vector2(209, 399)
+
+[node name="FlyingEnemyMarker" type="Marker2D" parent="."]
+position = Vector2(497, 83)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(576, 456)
+shape = SubResource("RectangleShape2D_hkdrh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D2"]
+position = Vector2(8, 266)
+shape = SubResource("RectangleShape2D_anc5n")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D3"]
+position = Vector2(1147, 280)
+shape = SubResource("RectangleShape2D_anc5n")
+
+[node name="BossUI" type="CanvasLayer" parent="."]
+offset = Vector2(100, 0)
+transform = Transform2D(1, 0, 0, 1, 100, 0)
+
+[node name="BossHealthBar" type="Control" parent="BossUI"]
+layout_mode = 3
+anchor_left = 0.0607639
+anchor_top = 0.731481
+anchor_right = 0.642361
+anchor_bottom = 0.783951
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBackground" type="ColorRect" parent="BossUI/BossHealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.0470588, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="BossUI/BossHealthBar"]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Boss" parent="." instance=ExtResource("4_ruuyc")]
+position = Vector2(282, 288)
+left_punch_scene = ExtResource("8_d8gqj")
+right_punch_scene = ExtResource("9_ytqio")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dukxajn3udhiw"]
+[gd_scene load_steps=14 format=3 uid="uid://dhqct5ac4thql"]
 
 [ext_resource type="PackedScene" uid="uid://d0arcuka0d2uw" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b63qaiier1y6t" path="res://player/deneme3.gd" id="2_1bvp3"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://e77wgs7j4h45" path="res://player/PackedScenes/right_leg.tscn" id="6_efxa6"]
 [ext_resource type="PackedScene" uid="uid://llniv8571ra7" path="res://player/PackedScenes/left_leg.tscn" id="7_dg77c"]
 [ext_resource type="PackedScene" uid="uid://nmphxuawnatk" path="res://player/PackedScenes/selection_wheel.tscn" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://47rvaxwnwt7u" path="res://ui.gd" id="8_kek77"]
-[ext_resource type="PackedScene" uid="uid://c22sdf1cbs56o" path="res://enemy_camera.tscn" id="11_efxa6"]
+[ext_resource type="Script" path="res://ui.gd" id="8_kek77"]
+[ext_resource type="PackedScene" path="res://enemy_camera.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://do6ejjbhyyir7" path="res://player/PackedScenes/cute_evil.tscn" id="12_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]

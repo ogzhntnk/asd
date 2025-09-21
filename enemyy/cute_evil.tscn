@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://csossycoaq8kc"]
+
+[ext_resource type="Script" uid="uid://bi8scjfdtd7ey" path="res://player/PackedScenes/cute_evil.gd" id="1_2li8v"]
+[ext_resource type="Texture2D" uid="uid://3kv4i6yb00ts" path="res://Denemeler/gozluenemy.png" id="1_fe4a4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2li8v"]
+atlas = ExtResource("1_fe4a4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smerf"]
+atlas = ExtResource("1_fe4a4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5v5a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2li8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smerf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe4a4"]
+size = Vector2(42, 33)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2li8v"]
+radius = 13.0
+
+[node name="CuteEvil" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_2li8v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a5v5a")
+animation = &"idle"
+frame_progress = 0.0941107
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_fe4a4")
+
+[node name="FloorDetection" type="RayCast2D" parent="."]
+position = Vector2(-15, 0)
+target_position = Vector2(0, 26)
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_2li8v")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.999999, 2.5)
+scale = Vector2(1.4, 1.45)

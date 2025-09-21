@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cask7khydq8yj"]
+
+[ext_resource type="Texture2D" uid="uid://dwermkp7swn81" path="res://boss/boss-asset/boss_el_firlatma.png" id="1_e4hxl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7icyl"]
+height = 80.0
+
+[node name="Punch1" type="RigidBody2D"]
+collision_layer = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, 0)
+texture = ExtResource("1_e4hxl")
+hframes = 20
+vframes = 4
+frame = 58
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.25208, 1.04035)
+shape = SubResource("CapsuleShape2D_7icyl")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+scale = Vector2(1.25208, 1.04035)
+shape = SubResource("CapsuleShape2D_7icyl")

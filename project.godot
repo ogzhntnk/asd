@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="asd"
-run/main_scene="uid://djguihxnrqfos"
+run/main_scene="uid://b5tfrxktd3cbk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [input]
 

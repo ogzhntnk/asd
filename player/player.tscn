@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 12.0
-height = 78.0
+height = 60.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 18
@@ -17,6 +17,7 @@ script = ExtResource("1_yw30f")
 script = ExtResource("2_yw30f")
 
 [node name="BodyParts" type="Node2D" parent="."]
+scale = Vector2(0.8, 0.8)
 
 [node name="Body" type="Node2D" parent="BodyParts"]
 

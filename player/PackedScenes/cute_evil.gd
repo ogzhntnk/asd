@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name CuteEvil
 
 # --- Stats ---
 @export var max_health: int = 60

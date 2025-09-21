@@ -1006,6 +1006,7 @@ autoplay = "default"
 metadata/_edit_lock_ = true
 
 [node name="dash" type="Node2D" parent="CharacterBody2D"]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="body_dash" type="AnimatedSprite2D" parent="CharacterBody2D/dash"]

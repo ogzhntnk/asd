@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1votro5boucp"]
+
+[ext_resource type="Script" uid="uid://cp7rivp7pa7up" path="res://player/PackedScenes/laser_bullet.gd" id="1_upsdq"]
+[ext_resource type="Texture2D" uid="uid://18mrjrpfg1uy" path="res://Denemeler/evil_camera_lazer.png" id="2_7vkt5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vkt5"]
+size = Vector2(22, 12)
+
+[node name="LaserBullet" type="Node2D"]
+script = ExtResource("1_upsdq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("2_7vkt5")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, -3)
+shape = SubResource("RectangleShape2D_7vkt5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-3, -1)
+scale = Vector2(1.3, 1.2)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
